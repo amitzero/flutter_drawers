@@ -1,7 +1,7 @@
 name: flutter_drawers
 description: A new Flutter package project for Beautiful drawer UI.
 version: 0.0.1
-homepage:
+homepage: https://github.com/amitzero/flutter_drawers
 
 environment:
   sdk: ">=2.16.2 <3.0.0"
