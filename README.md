@@ -10,7 +10,7 @@
 
 ## Example Project
 
-There is a pretty sweet example project in the `example` folder. Check it out. Otherwise, keep reading to get up and running.
+There is a pretty sweet example project in the [`example`](https://github.com/amitzero/flutter_drawers/tree/master/example) folder. Check it out. Otherwise, keep reading to get up and running.
 
 ## Getting started
 
