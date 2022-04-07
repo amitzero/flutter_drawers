@@ -1,9 +1,7 @@
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 import 'package:flutter_drawers/src/drawer_holder.dart';
 
-class BoxDrawer extends StatefulWidget {
+class SlideDrawer extends StatefulWidget {
   final Widget child;
   final Widget? drawer;
   final Widget? animatedHeader;
@@ -12,27 +10,27 @@ class BoxDrawer extends StatefulWidget {
   final bool showDrawerOpener;
   final double drawerOpenerTopMargin;
 
-  const BoxDrawer({
+  const SlideDrawer({
     Key? key,
     required this.child,
     this.drawer,
     this.animatedHeader,
     this.headerHeight,
     this.alignment = DrawerAlignment.end,
-    this.showDrawerOpener = true,
+    this.showDrawerOpener = false,
     this.drawerOpenerTopMargin = 5,
   })  : assert(
             drawer == null || animatedHeader == null || headerHeight != null),
         super(key: key);
 
-  static BoxDrawerState? of(BuildContext context) =>
-      context.findAncestorStateOfType<BoxDrawerState>();
+  static SlideDrawerState? of(BuildContext context) =>
+      context.findAncestorStateOfType<SlideDrawerState>();
 
   @override
-  BoxDrawerState createState() => BoxDrawerState();
+  SlideDrawerState createState() => SlideDrawerState();
 }
 
-class BoxDrawerState extends State<BoxDrawer>
+class SlideDrawerState extends State<SlideDrawer>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
   bool _canBeDragged = false;
@@ -61,16 +59,14 @@ class BoxDrawerState extends State<BoxDrawer>
   @override
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
-    drawerWidth = size.width * 0.75;
+    drawerWidth = size.width * 0.65;
     return GestureDetector(
       onHorizontalDragStart: _onDragStart,
       onHorizontalDragUpdate: _onDragUpdate,
       onHorizontalDragEnd: _onDragEnd,
-      onTapUp: (details) {
-        bool valid = widget.alignment == DrawerAlignment.end
-            ? details.globalPosition.dx < (size.width - drawerWidth)
-            : details.globalPosition.dx > drawerWidth;
-        if (animationController.isCompleted && valid) {
+      onTapUp: (delails) {
+        if (animationController.isCompleted &&
+            delails.globalPosition.dx < (size.width - drawerWidth)) {
           toggle();
         }
       },
@@ -88,50 +84,24 @@ class BoxDrawerState extends State<BoxDrawer>
                         : (drawerWidth * (animationController.value - 1)),
                     0,
                   ),
-                  child: Transform(
-                    transform: Matrix4.identity()
-                      ..setEntry(3, 2, 0.0006)
-                      ..rotateY((math.pi *
-                              (1 - animationController.value) *
-                              (widget.alignment == DrawerAlignment.end
-                                  ? -1
-                                  : 1)) /
-                          2),
-                    alignment: widget.alignment == DrawerAlignment.end
-                        ? Alignment.centerLeft
-                        : Alignment.centerRight,
-                    child: DrawerHolder(
-                      width: drawerWidth,
-                      child: widget.drawer,
-                      hederHeight: widget.headerHeight,
-                    ),
+                  child: DrawerHolder(
+                    width: drawerWidth,
+                    child: widget.drawer,
+                    hederHeight: widget.headerHeight,
                   ),
                 ),
-                Transform.translate(
-                  offset: Offset(
-                    widget.alignment == DrawerAlignment.end
-                        ? (-drawerWidth * animationController.value)
-                        : (drawerWidth * animationController.value),
-                    0,
-                  ),
-                  child: Transform(
-                    transform: Matrix4.identity()
-                      ..setEntry(3, 2, 0.0006)
-                      ..rotateY(
-                        (math.pi * animationController.value / 2) *
-                                (widget.alignment == DrawerAlignment.end
-                                    ? 1
-                                    : -1) +
-                            (animationController.value * 0.05) *
-                                (widget.alignment == DrawerAlignment.end
-                                    ? -1
-                                    : 1),
-                      ),
-                    alignment: widget.alignment == DrawerAlignment.end
-                        ? Alignment.centerRight
-                        : Alignment.centerLeft,
-                    child: widget.child,
-                  ),
+                Transform(
+                  transform: widget.alignment == DrawerAlignment.end
+                      ? (Matrix4.identity()
+                        ..translate(-drawerWidth * animationController.value, 0)
+                        ..scale(1 - animationController.value * 0.4))
+                      : (Matrix4.identity()
+                        ..translate(drawerWidth * animationController.value, 0)
+                        ..scale(1 - animationController.value * 0.4)),
+                  alignment: widget.alignment == DrawerAlignment.end
+                      ? Alignment.centerRight
+                      : Alignment.centerLeft,
+                  child: widget.child,
                 ),
                 if (widget.showDrawerOpener)
                   Positioned(

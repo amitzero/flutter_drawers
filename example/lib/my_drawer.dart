@@ -25,7 +25,7 @@ class MyDrawer extends StatelessWidget {
           title: const Text('increment and close drawer'),
           onTap: () {
             context.read<MyCounter>().incrementCounter();
-            BoxDrawer.of(context)?.close();
+            SlideDrawer.of(context)?.close();
           },
         ),
       ],

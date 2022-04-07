@@ -1,4 +1,4 @@
-# Beautiful drawer designs
+# Beautiful drawer designs 
 
 ## Features
 
@@ -28,6 +28,8 @@ BoxDrawer(
     child: MyHomePage(),
 ),
 ```
+
+Developed by `Amit Hasan`
 <!--
 ## Additional information
 
