@@ -19,17 +19,20 @@ First include `flutter_custom_drawers` then enjoy as built-in widget:
 ```dart
 import 'package:flutter_custom_drawers/drawers.dart';
 
-.......
+// other stuffs
 
 BoxDrawer(
     drawer: MyDrawer(),
+    alignment: DrawerAlignment.start,
+    showDrawerOpener: true,
+    drawerOpenerTopMargin: 8,
     animatedHeader: MyDrawerHeader(),
     headerHeight: 50,
     child: MyHomePage(),
 ),
 ```
 
-Developer [`AMIT HASAN`](https://github.com/amitzero)
+Author [`AMIT HASAN`](https://github.com/amitzero)
 <!--
 ## Additional information
 
