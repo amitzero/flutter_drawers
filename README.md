@@ -29,7 +29,7 @@ BoxDrawer(
 ),
 ```
 
-Developed by `Amit Hasan`
+Developer [`AMIT HASAN`](https://github.com/amitzero)
 <!--
 ## Additional information
 
