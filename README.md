@@ -14,10 +14,10 @@ There is a pretty sweet example project in the [`example`](https://github.com/am
 
 ## Getting started
 
-First include `flutter_custom_drawers` then enjoy as built-in widget:
+First include `flutter_drawers` then enjoy as built-in widget:
 
 ```dart
-import 'package:flutter_custom_drawers/drawers.dart';
+import 'package:flutter_drawers/flutter_drawers.dart';
 
 // other stuffs
 
