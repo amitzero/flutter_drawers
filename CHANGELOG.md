@@ -1,3 +1,11 @@
+## 0.0.3+2
+
+* Documentation
+
+## 0.0.3+1
+
+* Bug fix
+
 ## 0.0.3
 
 * New drawer widget added
