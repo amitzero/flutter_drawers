@@ -2,19 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_drawers/src/drawer_holder.dart';
 
 class SlideDrawer extends StatefulWidget {
-   /// Non-nullable child widget for home screen.
+  /// Non-nullable child widget for home screen.
   final Widget child;
+
   /// Non-nullable drawer widget.
   final Widget? drawer;
+
   /// Non-nullable drawer header.
   final Widget? animatedHeader;
-  /// Non-nullable drawer header height. Must not be null if 
+
+  /// Non-nullable drawer header height. Must not be null if
   /// [drawer] and [animatedHeader] is not null.
   final double? headerHeight;
+
   /// DrawerAlignment for drawer position.
   final DrawerAlignment alignment;
+
   /// Flag drawer opener's visibility.
   final bool showDrawerOpener;
+
   /// Drawer opener's top margin.
   final double drawerOpenerTopMargin;
 
@@ -41,13 +47,15 @@ class SlideDrawer extends StatefulWidget {
 
 class SlideDrawerState extends State<SlideDrawer>
     with SingleTickerProviderStateMixin {
-  
   /// Open and close drawer with animation.
   late AnimationController animationController;
+
   /// Check if dragging is valid.
   bool canBeDragged = false;
+
   /// Store device size.
   late Size size;
+
   /// Store drawer width. It usages 75% of device width.
   late double drawerWidth;
 
