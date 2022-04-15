@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class DrawerHolder extends StatelessWidget {
+  /// Non-nullable child widget for drawer screen.
   final double width;
+  /// Nullable drawer widget.
   final Widget? child;
+  /// Nullable drawer header height.
   final double? hederHeight;
   const DrawerHolder(
       {Key? key, required this.width, this.child, this.hederHeight})

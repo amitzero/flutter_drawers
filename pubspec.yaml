@@ -1,5 +1,6 @@
 name: flutter_drawers
-description: Beautiful drawer UI.
+description: Flutter package for beautiful drawer UI.
+  Provides custom drawer widget. Supports all platforms.
 version: 0.0.3+1
 homepage: https://github.com/amitzero/flutter_drawers
 
@@ -15,5 +16,3 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.0
-
-flutter:
